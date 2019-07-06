@@ -1,7 +1,6 @@
 function Animal(name) {
-  this._name = name;
+  this.name = name;
   this._foodAmount = 0;
-  this._self = this;
 }
 
 Animal.prototype._formatFoodAmount = function() {
