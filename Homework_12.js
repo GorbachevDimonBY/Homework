@@ -3,12 +3,12 @@
 
 function returnArr(arr) {
 	
-	transformArr = arr.map(function(item) {
+	return arr.map(function(item) {
 		var obj = {}; 
 		obj.name = item;
 		return obj;
 	});	
-	return transformArr;
+
 }
 returnArr(['HTML', 'CSS', 'JavaScript']);
 
@@ -41,11 +41,14 @@ sumVowel('ЗдравствУйте, АлесЯ')
 //--------------- Задание 4 -------------------
 
 function displayText(text) {
-	arr = text.split(/[.?!]/);
-	arr.forEach(function(item) {
-		console.log(item.trim() + ': ' + item.match(/[а-яА-Я]/g).length);
-    });
+	var arr = text.split(/[.?!]/);
+	return arr.forEach(function(item) {
+		var sum = 0;
+    	for (var i = 0; i < item.length; i++) {
+			if (item[i].toLowerCase() != item[i].toUpperCase()) sum++;
+        }
+		console.log(item.trim() + ': ' + sum);
+	});
 }
 
 displayText('Привет! Как дела? Пошли гулять. Хорошо');
-
