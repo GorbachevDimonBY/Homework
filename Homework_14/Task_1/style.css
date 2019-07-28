@@ -2,13 +2,16 @@ div {
   display: inline-block;
 }
 
+button {
+  margin-bottom: 15px;
+}
+
 input {
   margin-bottom: 15px;
 }
 
 table {
   border-collapse: collapse;
-  margin-top: 20px;
 }
 
 td {
@@ -21,6 +24,6 @@ td {
   background-color: black;
 }
 
-.white {
-  background-color: white;
+.red {
+  background-color: red;
 }

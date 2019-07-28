@@ -22,7 +22,7 @@ function hello() {
             var tr = document.createElement('tr');
             for (j = 1; j <= X.value; j++) {
                 var td = document.createElement('td');
-                (i % 2 === j % 2) ? td.classList.add('black'): td.classList.add('white');
+                (i % 2 == j % 2) ? td.classList.add('black'): td.classList.add('red');
                 tr.appendChild(td);
             };
             table.appendChild(tr);
@@ -36,6 +36,12 @@ div.onclick = function () {
     var td = div.getElementsByTagName('td');
 
     for (var i = 0; i < td.length; i++) {
-        td[i].classList.toggle('black');
+        if (td[i].className == 'red') {
+            td[i].classList.remove('red');
+            td[i].classList.add('black');
+        } else {
+            td[i].classList.remove('black');
+            td[i].classList.add('red');
+        };
     }
 }
