@@ -6,14 +6,23 @@ btn.addEventListener('click', function () {
     var request = new XMLHttpRequest();
 
     request.open('GET', 'https://reqres.in/api/users?page=2', true);
+    request.onerror = function () {
+        div.innerHTML += '<p class = "error">Ошибка при получении данных!</p>';
+    };
     request.send();
 
     request.onloadend = function () {
         if (request.status == 200) {
             arr = JSON.parse(request.responseText);
+            if (arr.data.length == 0) {
+                div.innerHTML += '<p class = "error">Ошибка при получении данных!</p>'
+                return;
+            }
             displayUsers();
-        } else {
-            div.innerHTML += '<p class = "error">Ошибка при получении данных!</p>';
+        }
+        if (request.status == 404) {
+            div.innerHTML += '<p class = "error">Ошибка при получении данных!</p>'
+            return;
         }
     }
 })
