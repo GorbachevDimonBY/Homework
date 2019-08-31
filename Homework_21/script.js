@@ -58,9 +58,7 @@
         const vowelLetters = ['а', 'я', 'ы', 'и', 'о', 'ё', 'у', 'ю', 'э', 'е', 'a', 'e', 'i', 'o', 'u', 'y'];
         let counter = 0;
 
-        text.forEach(items => {
-            vowelLetters.includes(items) && counter++;
-        });
+        text.forEach(items => vowelLetters.includes(items) && counter++);
         return counter;
     }
 
@@ -72,10 +70,10 @@
 {
     function transform(arrUsers) {
         const underForty = arrUsers.filter(item => item.age < 40),
-              userFedor = arrUsers.find(item => item.name.includes('Fedor'));
+              userFedor = arrUsers.find(item => item.name.startsWith('Fedor'));
               obj = {
-                "Пользователи младше 40": underForty,
-                "Пользователь с именем Федор": userFedor
+                'Пользователи младше 40': underForty,
+                'Пользователь с именем Федор': userFedor
               }
         return obj;
     }
@@ -91,9 +89,7 @@
 
 {
     function transform(arrNames) {
-        const arr = arrNames.map((item, index) => {
-            return {[`Пользователь ${index + 1}`]: item};
-        })
+        const arr = arrNames.map((item, index) => ({[`Пользователь ${index + 1}`]: item}));
         return arr;
     }
 
@@ -104,9 +100,7 @@
 
 {
     function transform(arrUsers) {
-        const mainObj = {};
-        arrUsers.forEach(item => Object.assign(mainObj, item));
-        return mainObj;
+        return arrUsers.reduce((mainObj, index) => Object.assign(mainObj, index), {});
     }
 
     transform([
@@ -157,7 +151,7 @@
         }
     }
 
-    var barsik = new Cat('Барсик');
+    let barsik = new Cat('Барсик');
 
     console.log(barsik.feed().stroke().stroke().feed());
 
@@ -170,30 +164,16 @@
     function showNumbers(x, y) {
     
         return new Promise((resolve, reject) => {
-
-        if (x >= y) {
+            if (x > y) [x, y] = [y, x];
             let timerId = setInterval(() => {
-                
-                if (x == y) {
+              
+                if (x === y) {
                     clearInterval(timerId);
                     resolve(x);
                 }
 
-            console.log(y++);
-            }, 1000)
-
-        } else {
-            let timerId = setInterval(() => {
-                
-                if (x == y) {
-                    clearInterval(timerId);
-                    resolve(x);
-                }
-           
             console.log(x++);
-
-            }, 1000) 
-        }
+            }, 1000)
         });
     }
 
